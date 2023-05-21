@@ -271,6 +271,17 @@ class TrafficSignal:
         ]
         return [min(1, density) for density in lanes_density]
 
+    def get_wave(self) -> List[float]:
+        queue = [
+            self.sumo.lane.getLastStepHaltingNumber(lane) for lane in self.lanes
+        ]
+        return queue
+    def get_wait(self):
+        wait=[
+            self.sumo.lane.getWaitingTime(lane) for lane in self.lanes
+
+        ]
+        return wait
     def get_lanes_queue(self) -> List[float]:
         """Returns the queue [0,1] of the vehicles in the incoming lanes of the intersection.
 
