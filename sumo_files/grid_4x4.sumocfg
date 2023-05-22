@@ -1,0 +1,10 @@
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="/home/zod/main_proj/sumo_exp/sumo_files/v1_4x4_grid_tl_adj.net.xml"/>
+        <route-files value="/home/zod/main_proj/sumo_exp/sumo_files/1Mtimesteps.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="5000000"/>
+    </time>
+</configuration>
