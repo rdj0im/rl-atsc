@@ -178,9 +178,11 @@ class Environment:
         env = sumo_rl.parallel_env(
             # net_file="sumo_files/4x4_grid_network.net.xml",
             # route_file="sumo_files/4x4_grid_routes.rou.xml",
-            net_file="sumo_files/v1_4x4_grid.net.xml",
+            # net_file="sumo_files/v1_4x4_grid.net.xml",
+            net_file="sumo_files/kochi.net.xml",
             # net_file="sumo_files/v1_4x4_grid_tl_adj.net.xml",
-            route_file="sumo_files/1Mtimesteps.rou.xml",
+            # route_file="sumo_files/1Mtimesteps.rou.xml",
+            route_file="sumo_files/kochi.rou.xml",
             # net_file="sumo_files/chry-test.net.xml",
             # route_file="sumo_files/chry-trips.trips.xml",
             out_csv_name="outputs/",
