@@ -11,7 +11,7 @@ import numpy as np
 
 # Set environment variable
 os.environ['SUMO_HOME'] = '/usr/share/sumo'
-os.environ['LIBSUMO_AS_TRACI'] = '1' #Optional: for a huge performance boost (~8x) with Libsumo (No GUI)
+# os.environ['LIBSUMO_AS_TRACI'] = '1' #Optional: for a huge performance boost (~8x) with Libsumo (No GUI)
 
 if "SUMO_HOME" in os.environ:
     tools = os.path.join(os.environ["SUMO_HOME"], "tools")
@@ -174,7 +174,7 @@ class CriticModel(nn.Module):
 
 class Environment:
     def get_env(self):
-        os.environ['LIBSUMO_AS_TRACI'] = '1' 
+        # os.environ['LIBSUMO_AS_TRACI'] = '1' 
         env = sumo_rl.parallel_env(
             # net_file="sumo_files/4x4_grid_network.net.xml",
             # route_file="sumo_files/4x4_grid_routes.rou.xml",
@@ -185,7 +185,7 @@ class Environment:
             # route_file="sumo_files/chry-trips.trips.xml",
             out_csv_name="outputs/",
             single_agent=False,
-            use_gui=False,
+            use_gui=True,
             # begin_time=10,
             num_seconds=5000000,
             min_green=5,
@@ -345,7 +345,7 @@ if __name__ == "__main__":
             _=actor_model(wave,wait,neighbour_s)
             act_probs_clone=[x.clone() for x in all_action_probs[signal]]
             policy_loss=policyLoss(act_probs_clone,advantages.clone())
-            actor_optim=networks.get_signal_actor_optim(signal)
+            actor_optim=networks.get_signal_actor_optim(signal)     
             actor_optim.zero_grad()
             policy_loss.backward(retain_graph=True)
             actor_optim.step()
@@ -398,7 +398,7 @@ if __name__ == "__main__":
                 tau-=1
         # for signal,reward in rewards.items() : batch_rewards[batch_ep_no][signal]=reward
    
-        # agents=env.agents
+        # agents=env.agents 
         # a_s={agent: env.action_space(agent) for agent in agents}
         # actions = {agent: env.action_space(agent).sample() for agent in agents}  
         # observations, rewards, terminations, truncations, infos = env.step(actions)
