@@ -272,6 +272,11 @@ class TrafficSignal:
         return [min(1, density) for density in lanes_density]
 
     def get_wave(self) -> List[float]:
+        wave= [
+            self.sumo.lane.getLastStepVehicleNumber(lane) for lane in self.lanes
+        ]
+        return wave
+    def get_queue(self):
         queue = [
             self.sumo.lane.getLastStepHaltingNumber(lane) for lane in self.lanes
         ]

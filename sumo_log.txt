@@ -1,0 +1,16 @@
+***Starting server on port 44481 ***
+Loading net-file from 'sumo_files/v1_4x4_grid.net.xml' ... done (15ms).
+Loading done.
+Simulation version 1.17.0 started with time: 0.00.
+Simulation ended at time: 0.00
+Reason: TraCI requested termination.
+Performance: 
+ Duration: 0.05s
+ TraCI-Duration: 0.00s
+ Real time factor: 0
+ UPS: 0.000000
+Vehicles: 
+ Inserted: 0
+ Running: 0
+ Waiting: 0
+

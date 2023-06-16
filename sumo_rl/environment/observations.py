@@ -6,6 +6,19 @@ from gymnasium import spaces
 
 from .traffic_signal import TrafficSignal
 
+TIME_STEPS=1000000
+GAMMA=0.99
+ALPHA=0.75 # spacial discount base
+A=0.5 #tradeoff coeff
+lr_actor=5e-4
+lr_critic=2.5e-4
+Beta=0.01 #regularization coeff
+batch_size=120
+wait_n=4
+wave_n=4
+neighbour_n=15*(wait_n+wave_n)
+phases_n=2
+
 
 class ObservationFunction:
     """Abstract base class for observation functions."""
@@ -44,7 +57,7 @@ class DefaultObservationFunction(ObservationFunction):
         # density = self.ts.get_lanes_density()
         # queue = self.ts.get_lanes_queue()
         # observation = np.array(phase_id + min_green + density + queue, dtype=np.float32)
-        observation=[phase_id,min_green,wave,wait]
+        observation={'phase':phase_id,'min_green':min_green,'wave':wave,'wait':wait}
         return observation
 
     def observation_space(self) -> spaces.Box:
